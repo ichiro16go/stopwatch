@@ -36,7 +36,7 @@ int stop(DateTime startTime, bool running, int pastTime) {
   }
 }
 
-int reset() {
+int resetTime() {
   print('reset!!');
   return 0;
 }
@@ -59,7 +59,7 @@ void runningStopwatch(DateTime startTime, bool running, int pastTime) {
         }
       case '3':
         running = false;
-        pastTime = reset();
+        pastTime = resetTime();
       case '4':
         exit(0);
     }
