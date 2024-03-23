@@ -1,4 +1,3 @@
-import 'dart:async';
 import 'dart:io';
 
 void printTime(int milli) {
@@ -10,7 +9,6 @@ void printTime(int milli) {
   String millsecondsStr =
       (millisecondsRemaining ~/ 10).toString().padLeft(2, '0');
   print('$minutesStr分$secondsStr.$millsecondsStr秒');
-  //return '${minutes.toString().padLeft(2, '0')}:${seconds.toString().padLeft(2, '0')}.${(millisecondsRemaining ~/ 10).toString().padLeft(2, '0')}';
 }
 
 DateTime start(DateTime startTime, bool running) {
@@ -22,20 +20,6 @@ DateTime start(DateTime startTime, bool running) {
     return startTime;
   }
 }
-
-// void start(){
-//   print('start!!');
-//     return DateTime.now();
-// }
-
-// void stop(DateTime startTime) {
-//   print(startTime);
-//   final nowTime = DateTime.now();
-//   print(nowTime);
-//   final milli = nowTime.difference(startTime).inMilliseconds;
-//   print('$milli');
-//   printTime(milli);
-// }
 
 int stop(DateTime startTime, bool running, int pastTime) {
   if (running == true) {
@@ -52,7 +36,7 @@ int stop(DateTime startTime, bool running, int pastTime) {
   }
 }
 
-int reset() {
+int resetTime() {
   print('reset!!');
   return 0;
 }
@@ -60,7 +44,7 @@ int reset() {
 void runningStopwatch(DateTime startTime, bool running, int pastTime) {
   while (true) {
     print('start/restart:1\nstop:2\nreset:3\nfinish:4');
-    String choice = stdin.readLineSync() ?? '';
+    final choice = stdin.readLineSync() ?? '';
     switch (choice) {
       case '1':
         startTime = start(startTime, running);
@@ -75,7 +59,7 @@ void runningStopwatch(DateTime startTime, bool running, int pastTime) {
         }
       case '3':
         running = false;
-        pastTime = reset();
+        pastTime = resetTime();
       case '4':
         exit(0);
     }
